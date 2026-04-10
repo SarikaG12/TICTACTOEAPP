@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Tic-Tac-Toe Premium</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SCREEN 1: Welcome Screen -->
+    <section id="welcome-screen" class="screen active">
+        <h1 class="main-title">NEON<br>TIC-TAC-TOE</h1>
+        <div class="hero-section">
+            <div class="logo-box">X | O</div>
+        </div>
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="app.showScreen('setup-screen')">START GAME</button>
+            <button class="btn btn-secondary" onclick="window.close()">EXIT</button>
+        </div>
+    </section>
+
+    <!-- SCREEN 2: Player Setup Screen -->
+    <section id="setup-screen" class="screen">
+        <h2>GAME SETUP</h2>
+        <div class="mode-selection">
+            <button id="pvc-btn" class="card-btn" onclick="app.selectMode('PvC')">
+                <h3>PvC</h3>
+                <p>Player vs Computer</p>
+                <div class="info-tag">150 Levels</div>
+            </button>
+            <button id="pvp-btn" class="card-btn" onclick="app.selectMode('PvP')">
+                <h3>PvP</h3>
+                <p>Player vs Player</p>
+                <div class="info-tag">Free Play</div>
+            </button>
+        </div>
+
+        <div id="name-inputs" class="input-group hidden">
+            <input type="text" id="player1-name" placeholder="Player 1 Name" autocomplete="off">
+            <input type="text" id="player2-name" placeholder="Player 2 Name" class="hidden" autocomplete="off">
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-secondary" onclick="app.showScreen('welcome-screen')">BACK</button>
+            <button class="btn btn-primary" onclick="app.proceedFromSetup()">NEXT</button>
+        </div>
+    </section>
+
+    <!-- SCREEN 3: Difficulty Selection (PvC Only) -->
+    <section id="difficulty-screen" class="screen">
+        <h2>SELECT DIFFICULTY</h2>
+        <div class="difficulty-cards">
+            <button class="diff-btn" onclick="app.setDifficulty('Easy')">EASY<span>Beginner Friendly</span></button>
+            <button class="diff-btn" onclick="app.setDifficulty('Medium')">MEDIUM<span>Balanced</span></button>
+            <button class="diff-btn" onclick="app.setDifficulty('Hard')">HARD<span>Minimax AI</span></button>
+        </div>
+        <div class="button-group mt-auto">
+            <button class="btn btn-secondary" onclick="app.showScreen('setup-screen')">BACK</button>
+        </div>
+    </section>
+
+    <!-- SCREEN 4: Levels (PvC Only) -->
+    <section id="levels-screen" class="screen">
+        <div class="header-row">
+            <h2>LEVELS</h2>
+            <div class="stars-display">⭐ <span id="total-stars-levels">0</span></div>
+        </div>
+        <div id="levels-grid" class="scrollable-grid">
+            <!-- Populated by JS -->
+        </div>
+        <div class="button-group mt-auto">
+            <button class="btn btn-secondary" onclick="app.showScreen('welcome-screen')">HOME</button>
+            <button class="btn btn-secondary" onclick="app.showScreen('difficulty-screen')">BACK</button>
+        </div>
+    </section>
+
+    <!-- SCREEN 5: Game Screen -->
+    <section id="game-screen" class="screen">
+        <div class="game-top-bar">
+            <div class="player-info p1">
+                <span id="p1-name-display">Player 1</span> (X)
+            </div>
+            <div class="game-meta">
+                <div id="turn-indicator">X'S TURN</div>
+                <div class="timer">⏳ <span id="timer-display">00:00</span></div>
+                <div class="current-level-display">Level: <span id="current-level-text">1</span></div>
+                <div class="score-display">Score: <span id="current-score-text">0</span> | High: <span id="high-score-text">0</span></div>
+            </div>
+            <div class="player-info p2">
+                <span id="p2-name-display">Computer</span> (O)
+            </div>
+        </div>
+
+        <div class="board-container">
+            <div id="board" class="tic-tac-toe-board">
+                <div class="cell" data-index="0"></div><div class="cell" data-index="1"></div><div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div><div class="cell" data-index="4"></div><div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div><div class="cell" data-index="7"></div><div class="cell" data-index="8"></div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-icon" onclick="app.showScreen('welcome-screen')">Home</button>
+            <button class="btn btn-icon" onclick="app.openLevelsOrWarning()">Levels</button>
+            <button class="btn btn-icon" onclick="app.restartMatch()">Restart</button>
+            <button class="btn btn-action" id="hint-btn" onclick="app.getHint()">💡 Hint</button>
+        </div>
+    </section>
+
+    <!-- SCREEN 6: Result Screen -->
+    <section id="result-screen" class="screen">
+        <h2 id="result-title" class="glow-text">YOU WON!</h2>
+        <div class="result-stats">
+            <p>Score: <span id="result-score">0</span></p>
+            <p>High Score: <span id="result-high-score">0</span></p>
+            <p class="stars-earned glow-gold">⭐ <span id="result-stars">3</span> Stars Earned</p>
+        </div>
+        <div class="button-group-vertical">
+            <button id="btn-next-level" class="btn btn-primary" onclick="app.startNextLevel()">NEXT LEVEL</button>
+            <button class="btn btn-action" onclick="app.restartMatch()">REPLAY MATCH</button>
+            <button id="btn-back-levels" class="btn btn-secondary" onclick="app.showScreen('levels-screen')">BACK TO LEVELS</button>
+            <button class="btn btn-secondary" onclick="app.showScreen('welcome-screen')">HOME</button>
+        </div>
+    </section>
+
+    <div id="toast" class="toast hidden">Message</div>
+
+    <script src="js/sounds.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
