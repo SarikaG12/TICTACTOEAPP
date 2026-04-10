@@ -1,17 +1,17 @@
 
-# 🎮 Tic Tac Toe Web Application
+ 🎮 Tic Tac Toe Web Application
 
-## 📌 Overview
+ Overview
 
 This project is a **full-stack Tic Tac Toe web application** developed using **HTML, CSS, JavaScript (frontend)** and **Java (backend)**.
 
 It is designed as a modern game application with **AI support, level system, and interactive UI**.
 
----
 
-## 🚀 Features
 
-### 🎯 Game Modes
+ Features
+
+ Game Modes
 
 * **Player vs Computer**
 
@@ -22,17 +22,17 @@ It is designed as a modern game application with **AI support, level system, and
 
   * Free play mode (no levels)
 
----
 
-### 🧠 AI Logic
+
+ AI Logic
 
 * Easy → random moves
 * Medium → basic strategy
 * Hard → strong logic (minimax)
 
----
 
-### ⭐ Scoring System
+
+Scoring System
 
 * Win → 3 stars
 * Draw → 1 star
@@ -44,39 +44,39 @@ Tracks:
 * High Score
 * Total Stars
 
----
 
-### ⏱ Timer
+
+ Timer
 
 * Starts when game begins
 * Stops when game ends
 
----
 
-### 💡 Hint Feature
+
+ Hint Feature
 
 * Suggests best move
 * Highlights recommended cell
 
----
 
-### 🔊 Sound Effects
+
+Sound Effects
 
 * Move sound
 * Win / Lose / Draw
 * Hint sound
 
----
 
-### 🎨 UI Design
+
+ UI Design
 
 * Dark theme
 * Clean layout
 * Game-like interface
 
----
 
-## 🏗 Tech Stack
+
+ Tech Stack
 
 **Frontend**
 
@@ -92,11 +92,11 @@ Tracks:
 
 * MySQL / SQLite
 
----
 
-## 📂 Project Structure
 
-```text
+ Project Structure
+
+
 tictactoe/
 │
 ├── src/
@@ -111,65 +111,5 @@ tictactoe/
 ├── settings.gradle
 ├── gradlew
 ├── gradlew.bat
-```
 
----
 
-## ⚙️ How to Run
-
-1. Clone the project
-
-```
-git clone https://github.com/your-username/tictactoe.git
-```
-
-2. Open in VS Code / IntelliJ
-
-3. Run the project:
-
-```
-gradlew.bat bootRun
-```
-
-4. Open browser:
-
-```
-http://localhost:8080
-```
-
----
-
-## 🔗 Working
-
-* User plays game in browser
-* Frontend sends request to backend
-* Java backend processes:
-
-  * game logic
-  * AI moves
-  * score
-* Result is sent back and displayed
-
----
-
-## 🎯 Learning Outcomes
-
-* Full-stack development
-* Frontend + backend integration
-* AI logic implementation
-* Game development concepts
-
----
-
-## 👩‍💻 Author
-
-**Sarika G**
-B.Tech CSE – SRM IST
-
----
-
-## ⭐ Conclusion
-
-This project demonstrates a **complete web application** with both frontend and backend, including AI features and interactive gameplay.
-
----
