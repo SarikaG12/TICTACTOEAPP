@@ -88,7 +88,7 @@ Sound Effects
 
 * Java (Spring Boot / Servlets)
 
-**Database (Optional)**
+Database 
 
 * MySQL / SQLite
 
